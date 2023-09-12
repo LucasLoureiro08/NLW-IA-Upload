@@ -13,14 +13,14 @@ export function App() {
       <div className='min-h-screen flex flex-col'>
         
         <div className='px-6 py-3 flex items-center justify-between border-b'>
-          <h1 className='text-xl font-bold'>upload.ai</h1>
+          <h1 className='text-xl font-bold text-amber-50'>upload<code className="text-violet-400">.ai</code></h1>
           
           <div className='flex items-center gap-3'>
-            <span className='text-sm text-muted-foreground'>Desenvolvido com ❤️ no NLW da Rocketseat</span>
+            <span className='text-sm text-amber-50'>Desenvolvido com ❤️ no NLW da Rocketseat</span>
             
             <Separator orientation="vertical" className="h-6" />
             
-            <Button variant="outline">
+            <Button className="text-amber-50">
               <Github className='w-4 h-4 mr-2' />
               Github
             </Button>
@@ -33,7 +33,7 @@ export function App() {
               <Textarea placeholder="Resultado gerado pela IA..." className="resize-none p-4 leading-relaxed " readOnly  />
             </div>
             <p className="text-sm text-muted-foreground">
-              Lembre-se: você pode uttilizar a variável <code className="text-violet-400">{'{transcription}'}</code> no seu prompt para adicionar o conteúdo da transcrição do vídeo selecionado
+              Lembre-se: você pode utilizar a variável <code className="text-violet-400">{'{transcription}'}</code> no seu prompt para adicionar o conteúdo da transcrição do vídeo selecionado
             </p>
           </div>
           <aside className="w-72 space-y-5">
@@ -64,8 +64,8 @@ export function App() {
 
             <Separator />
             <form  className="space-y-6">
-              <div className="space-y-2">
-                <Label>Prompt</Label>
+              <div className="space-y-2 text-amber-50">
+                <Label >Prompt</Label>
                 <Select>
                   <SelectTrigger>
                     <SelectValue placeholder="Selecione um prompt..." />
@@ -76,7 +76,7 @@ export function App() {
                   </SelectContent>
                 </Select>
               </div>
-              <div className="space-y-2">
+              <div className="space-y-2 text-amber-50">
                 <Label>Modelo</Label>
                 <Select disabled defaultValue='gpt3.5'>
                   <SelectTrigger>
