@@ -9,16 +9,20 @@ import { fetchFile } from "@ffmpeg/util";
 import { api } from "@/lib/axios";
 
 
-type Status = 'waiting' | 'converting' | 'uploading' | 'generating' | 'sucess'
+type Status = 'waiting' | 'converting' | 'uploading' | 'generating' | 'success'
 
 const statusMessages = {
     converting: 'Convertendo...',
     generating: 'Transcrevendo...',
     uploading: 'Carregando...',
-    sucess: 'Sucesso'
+    success: 'Sucesso'
 }
 
-export function VideoInputForm() {
+interface VideoInputFormProps {
+    onVideoUploaded: (id: string) => void
+}
+
+export function VideoInputForm(props: VideoInputFormProps) {
     const [videoFile, setVideoFile] = useState<File | null >(null)
     const promptInputRef = useRef<HTMLTextAreaElement>(null)
     const [status, setStatus] = useState<Status>('waiting')
@@ -105,7 +109,8 @@ export function VideoInputForm() {
             prompt,
         })
 
-        setStatus('sucess')
+        setStatus('success')
+        props.onVideoUploaded(videoId)
         console.log('Finalizou')
     }
 
@@ -148,10 +153,10 @@ export function VideoInputForm() {
                 />
             </div>
             <Button  
-                data-sucess={status === 'sucess'} 
+                data-success={status === 'success'} 
                 disabled={status !== 'waiting'} 
                 type="submit" 
-                className="w-full data-[sucess=true]: bg-emerald-600"
+                className="w-full data-[success=true]:bg-emerald-600"
             >
                 {status === 'waiting' ? (
                   <>
